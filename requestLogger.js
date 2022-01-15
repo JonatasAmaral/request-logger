@@ -1,5 +1,5 @@
-function consoleLogger(req) {
-	let data = JSON.stringify(
+function dataFetch(req) {
+	return JSON.stringify(
 		{
 			method: req.method,
 			headers: req.headers,
@@ -9,7 +9,10 @@ function consoleLogger(req) {
 		null,
 		"\t"
 	);
+}
 
+function consoleLogger(req) {
+	let data = dataFetch(req);
 	console.log(data);
 }
 
