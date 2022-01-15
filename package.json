@@ -1,0 +1,39 @@
+{
+  "name": "request-logger",
+  "version": "0.1.0",
+  "description": "A simple nodeJS server (as an API/webhook endpoint) to log out caller's request information.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "licenses": [
+    {
+      "type": "CC0",
+      "url": "https://github.com/JonatasAmaral/request-logger/blob/main/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonatasAmaral/request-logger.git"
+  },
+  "keywords": [
+    "nodeJS",
+    "server",
+    "logger",
+    "request",
+    "api",
+    "webhook"
+  ],
+  "author": "Jonatas Amaral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonatasAmaral/request-logger/issues"
+  },
+  "homepage": "https://github.com/JonatasAmaral/request-logger#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
