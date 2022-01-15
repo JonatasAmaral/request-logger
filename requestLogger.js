@@ -1,4 +1,4 @@
-function requestLogger(req) {
+function consoleLogger(req) {
 	let data = JSON.stringify(
 		{
 			method: req.method,
@@ -13,4 +13,4 @@ function requestLogger(req) {
 	console.log(data);
 }
 
-module.exports = { requestLogger };
+module.exports = { consoleLogger };
