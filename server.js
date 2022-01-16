@@ -1,5 +1,5 @@
 const express = require("express");
-const { consoleLogger } = require("./requestLogger");
+const { consoleLogger, fileLogger } = require("./requestLogger");
 
 const app = express();
 app.use(express.json());
@@ -7,7 +7,7 @@ const port = 3000;
 
 function handler(req, res) {
 	consoleLogger(req);
-	res.send("The server is up to date and running! 🚀");
+	fileLogger(req, res);
 }
 app.get("/", handler);
 app.post("/", handler);
