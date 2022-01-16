@@ -18,22 +18,25 @@ function consoleLogger(req) {
 	console.log(data);
 }
 
-const logsCounter = {
-	_count: 0,
-	get count() {
-		return this._count;
-	},
-	set count(value) {
-		this._count = value;
-		fs.writeFile(`_logs-counter.txt`, `${this._count}`, err => {
-			if (err) console.error(`Couldn't persist "_logs-counter.txt" file!`);
-		});
-	},
-}
-try {
-	logsCounter.count = parseInt(fs.readFileSync("_logs-counter.txt", "utf8"));
-} catch (err) {
-	console.error("Couldn't read \"_logs-counter.txt\" file!");
+function LogsCounter() {
+	let _count = 0;
+	try {
+		_count = parseInt(fs.readFileSync("_logs-counter.txt", "utf8"));
+	} catch (err) {
+		console.error("Couldn't read \"_logs-counter.txt\" file!");
+	}
+
+	return {
+		get count() {
+			return _count;
+		},
+		set count(value) {
+			_count = value;
+			fs.writeFile(`_logs-counter.txt`, `${_count}`, err => {
+				if (err) console.error(`Couldn't persist "_logs-counter.txt" file!`);
+			});
+		}
+	}
 }
 
 function fileLogger(req, res) {
@@ -41,6 +44,7 @@ function fileLogger(req, res) {
 	let dateTime = new Date()
 		.toISOString()
 		.replaceAll(":", "-");
+	const logsCounter = LogsCounter()
 
 	fs.mkdir("logs", { recursive: true }, err => {
 		if (err) throw err;
