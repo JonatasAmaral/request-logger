@@ -19,6 +19,8 @@ function consoleLogger(req) {
 }
 
 function LogsCounter() {
+	if (this.instance) return this.instance;
+
 	let _count = 0;
 	try {
 		_count = parseInt(fs.readFileSync("_logs-counter.txt", "utf8"));
@@ -26,7 +28,7 @@ function LogsCounter() {
 		console.error("Couldn't read \"_logs-counter.txt\" file!");
 	}
 
-	return {
+	this.instance = {
 		get count() {
 			return _count;
 		},
@@ -37,6 +39,7 @@ function LogsCounter() {
 			});
 		}
 	}
+	return this.instance;
 }
 
 function fileLogger(req, res) {
