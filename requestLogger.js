@@ -46,7 +46,7 @@ function fileLogger(req, res) {
 	let data = dataFetch(req);
 	let dateTime = new Date()
 		.toISOString()
-		.replaceAll(":", "-");
+		.replace(/:/g, "-");
 	const logsCounter = LogsCounter()
 
 	fs.mkdir("logs", { recursive: true }, err => {
